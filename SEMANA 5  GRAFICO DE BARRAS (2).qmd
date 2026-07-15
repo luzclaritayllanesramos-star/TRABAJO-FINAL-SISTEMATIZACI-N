@@ -1,0 +1,33 @@
+---
+title: "semana 5"
+author: "Luz clarita Yllanes Ramos"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+#ENFERMEDADES INFECCIOSAS
+Categorias<-c("COVID-19", "INFLUENZA" , "DENGUE" , "HEPATITIS B" , "BRONQUITIS")
+Valores<-c(10,20,30,40,50)
+
+```
+
+You can add options to executable code like this
+
+```{r}
+# generando el grafico de barras
+
+barplot(Valores,names.arg = Categorias,col = "orange" ,main = "Grafico de Barras",
+        xlab = "categorias", ylab = "Valores",border = "blue") 
+ 
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
