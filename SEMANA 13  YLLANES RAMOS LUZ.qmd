@@ -1,0 +1,138 @@
+---
+title: "PCA - SEMANA 13"
+author: "YLLANES RAMOS LUZ CLARITA"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+# Importar la base de datos
+datos <- read.csv("pacientes.csv", header = TRUE)
+
+# Visualizar las primeras filas
+head(datos)
+
+# Ver estructura
+str(datos)
+
+# Resumen estadístico
+summary(datos)
+```
+
+```{r}
+# Seleccionar solo las variables numéricas 
+
+variables <- datos[,2:9] 
+
+# Estandarizar 
+
+variables <- scale(variables) 
+
+# PCA 
+
+pca <- prcomp(variables) 
+
+# Resultados 
+
+summary(pca) 
+
+# Cargas de los componentes 
+
+pca$rotation 
+
+# Coordenadas de los pacientes 
+
+pca$x 
+
+# Gráfico 
+
+biplot(pca)
+```
+
+```{r}
+datos <- read.csv("pacientes_caidas.csv")
+
+head(datos)
+summary(datos)
+```
+
+```{r}
+variables <- datos[,2:8]
+
+head(variables)
+
+```
+
+```{r}
+variables.std <- scale(variables)
+
+```
+
+```{r}
+pca <- prcomp(variables.std)
+
+summary(pca)
+
+```
+
+```{r}
+summary(pca)$importance
+
+```
+
+```{r}
+biplot(pca)
+biplot(
+  pca,
+  cex = 0.8,
+  col = c("red", "blue")
+)
+biplot(
+  pca,
+  cex = 0.8,
+  col = c("red", "blue")
+)
+biplot(
+  pca,
+  cex = 0.8,
+  col = c("red", "blue")
+)
+
+```
+
+```{r}
+set.seed(123)
+km <- kmeans(variables.std,centers = 3,nstart = 25)
+km
+
+```
+
+```{r}
+table(km$cluster)
+
+```
+
+```{r}
+datos$Grupo <- km$cluster
+
+datos
+
+
+```
+
+```{r}
+aggregate(
+    variables,
+    by = list(Grupo = km$cluster),
+    mean
+)
+
+```
