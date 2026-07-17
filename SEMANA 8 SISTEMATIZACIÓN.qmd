@@ -1,0 +1,50 @@
+---
+title: "CASO 4"
+author: "LUZ CLARITA YLLANES RAMOS"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+#CASO 1
+#DATOS
+x<-c(1.0,1.5,2.0,2.5,3.0)
+y<-c(145,142,138,134,130)
+```
+
+You can add options to executable code like this
+
+```{r}
+#COEFICIENTE DE CORRELACIÓN DE PEARSSON
+cor(x,y)
+```
+
+```{r}
+#OBTENIENDO COEFICIENTES DE LA REGRESIÓN
+#MODELO
+modelo<-lm(y~x)
+coef(modelo)
+```
+
+```{r}
+#Hay una relación negativa muy fuerte entre el consumo del agua y la presión arterial
+#Predecir la presión arterial para una persona que consume 3.5 litros de agua al día
+predict(modelo,data.frame(x=3.5))
+```
+
+```{r}
+#gráfico
+
+plot(x,y,main = "consumo de agua vs presion arterial",
+     xlab = "consumo de agua",
+     ylab = "presion arterial",pch=19)
+abline(modelo,lwd=2)
+```
